@@ -32,10 +32,13 @@ class MainFragment : Fragment() {
         image_rv.layoutManager = imageLayoutManager
         indicator_rv.adapter = indicatorAdapter
         indicator_rv.layoutManager = indicatorLayoutManager
+
         next_scroll_btn.setOnClickListener {
+            if(imageLayoutManager.findFirstVisibleItemPosition() != imageAdapter.itemCount){
             imageLayoutManager.smoothScrollToPosition(image_rv, null, imageLayoutManager.findFirstVisibleItemPosition() + 1)
             indicatorAdapter.setIndicator(imageLayoutManager.findFirstVisibleItemPosition() + 1)
             indicatorAdapter.notifyDataSetChanged()
+            }
         }
         back_scroll_btn.setOnClickListener {
             if(imageLayoutManager.findFirstVisibleItemPosition() != 0){
