@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.ianschoenrock.caroselsamples.viewpager_example.ViewPagerExampleFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.image_item.view.*
@@ -47,6 +48,13 @@ class MainFragment : Fragment() {
                 indicatorAdapter.notifyDataSetChanged()
             }
 
+        }
+
+        nav_btn.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .addToBackStack("")
+                .replace(R.id.fragment_container, ViewPagerExampleFragment())
+                .commit()
         }
     }
 }
